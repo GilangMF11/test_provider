@@ -28,13 +28,27 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  arabic_numbers: ^1.0.0
+  bloc: ^8.1.2
   cupertino_icons: ^1.0.2
+  device_info_plus: ^9.1.0
+  external_app_launcher: ^3.1.0
   flutter:
     sdk: flutter
+  flutter_islamic_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.5
+  fluttertoast: ^8.2.4
+  geolocator: ^10.1.0
   http: ^1.1.0
-  provider: ^6.1.1
+  image_picker: ^1.0.4
+  just_audio: ^0.9.36
+  mat_month_picker_dialog: ^1.1.1
+  shared_preferences: ^2.2.2
+  shimmer: ^3.0.0
+  simple_month_year_picker: ^1.0.5
+  trust_location: ^2.0.13
+  url_launcher: ^6.2.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

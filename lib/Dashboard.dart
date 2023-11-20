@@ -88,259 +88,87 @@ class Dashboard extends StatelessWidget {
                               bottomRight: Radius.circular(20)),
                           color: Color(0xFF0a4f8f),
                         ),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Menu",
+                        child: const Center(
+                          child: Text("Menu",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center)
-                          ],
                         ),
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Row(children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 20, left: 20),
-                                child: Column(children: [
-                                  Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(180),
-                                        color: Colors.blueAccent),
-                                    child: const Icon(Icons.camera,
-                                        color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("Presensi"),
-                                ]),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Column(children: [
-                                  Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(180),
-                                        color: Colors.purple),
-                                    child: const Icon(Icons.book,
-                                        color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("Rekap"),
-                                ]),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(0),
-                                child: Column(children: [
-                                  Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(180),
-                                        color: Colors.orange),
-                                    child: const Icon(Icons.alarm_add,
-                                        color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("Perizinan"),
-                                ]),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Column(children: [
-                                  Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(180),
-                                        color: Colors.blueAccent),
-                                    child: const Icon(Icons.lock_clock,
-                                        color: Colors.red),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text("Home"),
-                                ]),
-                              ),
-                            ]),
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Center(
+                              child: Row(
+                                children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.all(20),
+                                  child: Column(children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(180),
+                                          color: Colors.blueAccent),
+                                      child: const Icon(Icons.camera,
+                                          color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text("Presensi"),
+                                  ]),
+                                ),
+                                
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.all(20),
+                                  child: Column(children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(180),
+                                          color: Colors.blueAccent),
+                                      child: const Icon(Icons.camera,
+                                          color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text("Presensi"),
+                                  ]),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.all(20),
+                                  child: Column(children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(180),
+                                          color: Colors.blueAccent),
+                                      child: const Icon(Icons.camera,
+                                          color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text("Presensi"),
+                                  ]),
+                                ),
+                              ]),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Row(children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 20, left: 20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                          ]),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Row(children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 20, left: 20),
-                              child: Column(children: [
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(180),
-                                      color: Colors.blueAccent),
-                                  child: const Icon(Icons.home,
-                                      color: Colors.white),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text("Home"),
-                              ]),
-                            ),
-                          ]),
-                        ),
-                      ],
+                          ],
+                      ),
                     )
                   ]),
                 )
