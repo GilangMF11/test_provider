@@ -8,10 +8,6 @@ import 'package:provider_dzikir/utils/util_device.dart';
 import 'package:provider_dzikir/utils/util_version.dart';
 import 'package:provider_dzikir/utils/util_userPreference.dart';
 
-
-
-
-
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc() : super(InitialState()) {
     _loadUserData(); // Cek apakah ada data pengguna yang disimpan sebelumnya saat AuthenticationBloc dibuat
@@ -44,7 +40,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
           'http://192.168.14.213:8001/api/v1/auth/login' as Uri,
           headers: {
             'Accept': 'application/json',
-            'User-Agent': 'your-user-agent',
+            'User-Agent': 'neoPresensiAndroid',
             'Version': appVersion,
             'X-Device-Id': deviceId,
           },

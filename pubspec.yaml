@@ -48,6 +48,7 @@ dependencies:
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
   simple_month_year_picker: ^1.0.5
+  sizer: ^2.0.15
   trust_location: ^2.0.13
   url_launcher: ^6.2.1
 
@@ -68,7 +69,7 @@ flutter_icons:
   ios: true
   image_path: "assets/images/logo.png"
   adaptive_icon_background: transparent
-  adaptive_icon_foreground: assets/images/logo.png
+  adaptive_icon_foreground: assets/images/spalashcreen2.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
