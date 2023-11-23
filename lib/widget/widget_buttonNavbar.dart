@@ -13,7 +13,9 @@ class ButtonNavBar extends StatelessWidget {
     return BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0a4f8f),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(0.5),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.white), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite, color: Colors.white), label: 'About'),

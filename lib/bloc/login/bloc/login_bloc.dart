@@ -8,6 +8,7 @@ import 'package:provider_dzikir/utils/util_device.dart';
 import 'package:provider_dzikir/utils/util_version.dart';
 import 'package:provider_dzikir/utils/util_userPreference.dart';
 
+
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc() : super(InitialState()) {
     _loadUserData(); // Cek apakah ada data pengguna yang disimpan sebelumnya saat AuthenticationBloc dibuat
@@ -31,6 +32,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   Stream<AuthenticationState> mapEventToState(AuthenticationEvent event) async* {
     if (event is LoginEvent) {
       yield LoadingState();
+
+      
 
       try {
         final deviceId = await getDeviceId();
