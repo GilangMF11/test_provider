@@ -1,7 +1,7 @@
 import 'package:url_launcher/url_launcher.dart';
 
 class LaunchBrowser {
-  Future<void> _lauchBrowser(String url) async {
+  Future<void> _launchInBrowser(String url) async {
     if (!await launch(
       url,
       forceSafariVC: false,
