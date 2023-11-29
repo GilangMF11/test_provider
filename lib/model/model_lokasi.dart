@@ -1,79 +1,69 @@
-class ModelLocation {
-  bool? status;
-  List<DataISI>? data;
+import 'dart:convert';
 
-  ModelLocation({this.status, this.data});
+ModelLokasi modelLokasiFromJson(String str) => ModelLokasi.fromJson(json.decode(str));
 
-  factory ModelLocation.fromJson(Map<String, dynamic> json) {
-    return ModelLocation(
-      status: json['status'],
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => DataISI.fromJson(e as Map<String, dynamic>))
-          .toList(),
+String modelLokasiToJson(ModelLokasi data) => json.encode(data.toJson());
+
+class ModelLokasi {
+    final bool status;
+    final List<Datum> data;
+
+    ModelLokasi({
+        required this.status,
+        required this.data,
+    });
+
+    factory ModelLokasi.fromJson(Map<String, dynamic> json) => ModelLokasi(
+        status: json["status"],
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
     );
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'status': this.status,
+    Map<String, dynamic> toJson() => {
+        "status": status,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
     };
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
-class DataISI {
-  String? label;
-  DetailAA? detail;
+class Datum {
+    final String label;
+    final Detail detail;
 
-  DataISI({this.label, this.detail});
+    Datum({
+        required this.label,
+        required this.detail,
+    });
 
-  factory DataISI.fromJson(Map<String, dynamic> json) {
-    return DataISI(
-      label: json['label'],
-      detail: json['detail'] != null
-          ? DetailAA.fromJson(json['detail'] as Map<String, dynamic>)
-          : null,
+    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        label: json["label"],
+        detail: Detail.fromJson(json["detail"]),
     );
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'label': this.label,
+    Map<String, dynamic> toJson() => {
+        "label": label,
+        "detail": detail.toJson(),
     };
-    if (this.detail != null) {
-      data['detail'] = this.detail!.toJson();
-    }
-    return data;
-  }
 }
 
-class DetailAA {
-  double? lat;
-  double? long;
-  int? radius;
-  String? idlokasi;
+class Detail {
+    final double lat;
+    final double long;
+    final int radius;
 
-  DetailAA({this.lat, this.long, this.radius, this.idlokasi});
+    Detail({
+        required this.lat,
+        required this.long,
+        required this.radius,
+    });
 
-  factory DetailAA.fromJson(Map<String, dynamic> json) {
-    return DetailAA(
-      lat: json['lat'],
-      long: json['long'],
-      radius: json['radius'],
-      idlokasi: json['idlokasi'],
+    factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+        lat: json["lat"]?.toDouble(),
+        long: json["long"]?.toDouble(),
+        radius: json["radius"],
     );
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'lat': this.lat,
-      'long': this.long,
-      'radius': this.radius,
-      'idlokasi': this.idlokasi,
+    Map<String, dynamic> toJson() => {
+        "lat": lat,
+        "long": long,
+        "radius": radius,
     };
-    return data;
-  }
 }

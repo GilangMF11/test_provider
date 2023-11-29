@@ -8,12 +8,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trust_location/trust_location.dart';
 import 'package:vector_math/vector_math.dart' as math;
 import 'package:provider_dzikir/utils/util_color.dart';
-import 'package:provider_dzikir/model/model_lokasi.dart';
+import 'package:provider_dzikir/bloc/lokasi/bloc/lokasi_bloc.dart';
+import 'package:provider_dzikir/bloc/lokasi/bloc/lokasi_state.dart';
 
 class PresensiPage extends StatefulWidget {
   const PresensiPage({super.key});
@@ -44,7 +46,6 @@ class _PresensiPageState extends State<PresensiPage> {
   var la;
 
   List<String> statusPM = ["Masuk", "Pulang"];
-  List<DataISI>? locations = [];
   double? pLatt;
   double? pLngg;
   int? raddius;
@@ -330,28 +331,45 @@ class _PresensiPageState extends State<PresensiPage> {
                       SizedBox(
                         width: 3.w,
                       ),
-                      Expanded(
-                          flex: 1,
-                          child: DropdownButtonHideUnderline(
-                              child: DropdownButton<DataISI>(
-                            hint: const Text("Pilih Lokasi"),
-                            icon: const Visibility(
-                                visible: true,
-                                child: Icon(Icons.keyboard_arrow_down_rounded)),
-                            isExpanded: true,
-                            value: currentSelectedValue,
-                            items: locations!
-                                .map((location) => DropdownMenuItem<DataISI>(
-                                      value: location,
-                                      child: Text(location.label ?? ''),
-                                    ))
-                                .toList(),
-                            onChanged: (selectedLocation) {
-                              setState(() {
-                                currentSelectedValue = selectedLocation;
-                              });
-                            },
-                          )))
+ Expanded(
+  flex: 1,
+  child: BlocBuilder<LokasiBloc, LokasiState>(
+    builder: (context, state) {
+      if (state is LokasiLoadingState) {
+        return CircularProgressIndicator();
+      } else if (state is LokasiLoadedState) {
+        List<String> locations = state.labels;
+
+        return DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            hint: const Text("Pilih Lokasi"),
+            icon: const Visibility(
+              visible: true,
+              child: Icon(Icons.keyboard_arrow_down_rounded),
+            ),
+            isExpanded: true,
+            value: currentSelectedValue,
+            items: locations
+              .map((location) => DropdownMenuItem<String>(
+                value: location,
+                child: Text(location),
+              ))
+              .toList(),
+            onChanged: (selectedLocation) {
+              setState(() {
+                currentSelectedValue = selectedLocation;
+              });
+            },
+          ),
+        );
+      } else if (state is LokasiErrorState) {
+        return Text(state.errorMessage);
+      }
+
+      return const CircularProgressIndicator();
+    },
+  ),
+)
                     ],
                   ),
                 ),

@@ -1,27 +1,28 @@
 import 'package:equatable/equatable.dart';
 import 'package:provider_dzikir/model/model_lokasi.dart';
-
-abstract class LocationState extends Equatable {
+abstract class LokasiState extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
-class LocationInitialState extends LocationState {}
+class LokasiInitialState extends LokasiState {}
 
-class LocationLoadedState extends LocationState {
-  final ModelLocation modelLocation;
+class LokasiLoadingState extends LokasiState {}
 
-  LocationLoadedState(this.modelLocation);
+class LokasiLoadedState extends LokasiState {
+  final List<String> labels;
+
+  LokasiLoadedState(this.labels);
 
   @override
-  List<Object?> get props => [modelLocation];
+  List<Object?> get props => [labels];
 }
 
-class LocationErrorState extends LocationState {
-  final String error;
+class LokasiErrorState extends LokasiState {
+  final String errorMessage;
 
-  LocationErrorState(this.error);
+  LokasiErrorState(this.errorMessage);
 
   @override
-  List<Object?> get props => [error];
+  List<Object?> get props => [errorMessage];
 }

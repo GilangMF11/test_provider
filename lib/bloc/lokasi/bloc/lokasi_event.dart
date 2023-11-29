@@ -1,8 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-abstract class LocationEvent extends Equatable {
+abstract class LokasiEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
-class FetchLocationEvent extends LocationEvent {}
+class FetchLokasiEvent extends LokasiEvent {}
+
+class SelectLokasiEvent extends LokasiEvent {
+  final String label;
+
+  SelectLokasiEvent(this.label);
+
+  @override
+  List<Object?> get props => [label];
+}

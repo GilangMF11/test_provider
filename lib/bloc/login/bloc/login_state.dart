@@ -1,31 +1,31 @@
 import 'package:equatable/equatable.dart';
+import 'package:provider_dzikir/model/model_login.dart';
 
-abstract class AuthenticationState extends Equatable {
-  const AuthenticationState();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class InitialState extends AuthenticationState {}
-
-class LoadingState extends AuthenticationState {}
-
-class AuthenticatedState extends AuthenticationState {
-  final bool status;
-  final String token;
-
-  AuthenticatedState({required this.status, required this.token});
+abstract class LoginState extends Equatable {
+  const LoginState();
 
   @override
-  List<Object?> get props => [status, token];
+  List<Object> get props => [];
 }
 
-class ErrorState extends AuthenticationState {
+class LoginInitial extends LoginState {}
+
+class LoginLoading extends LoginState {}
+
+class LoginSuccess extends LoginState {
+  final ModelLogin modelLogin;
+
+  const LoginSuccess({required this.modelLogin});
+
+  @override
+  List<Object> get props => [modelLogin];
+}
+
+class LoginFailure extends LoginState {
   final String errorMessage;
 
-  ErrorState({required this.errorMessage});
+  const LoginFailure({required this.errorMessage});
 
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object> get props => [errorMessage];
 }

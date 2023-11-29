@@ -1,33 +1,40 @@
-import 'dart:async';
+import 'dart:convert';
+import 'lokasi_event.dart';
 import 'package:bloc/bloc.dart';
-import 'package:provider_dzikir/model/model_lokasi.dart';
-import 'package:provider_dzikir/bloc/lokasi/bloc/lokasi_event.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider_dzikir/bloc/lokasi/bloc/lokasi_state.dart';
 
-class LocationBloc extends Bloc<LocationEvent, LocationState> {
-  LocationBloc() : super(LocationInitialState());
 
-  @override
-  Stream<LocationState> mapEventToState(LocationEvent event) async* {
-    if (event is FetchLocationEvent) {
+class LokasiBloc extends Bloc<LokasiEvent, LokasiState> {
+  LokasiBloc() : super(LokasiInitialState());
+
+  Stream<LokasiState> mapEventToState(LokasiEvent event) async* {
+    if (event is FetchLokasiEvent) {
+      yield LokasiLoadingState();
       try {
-        // Gantilah baris berikut dengan logika pengambilan data asinkron
-        ModelLocation modelLocation = await fetchData();
-        yield LocationLoadedState(modelLocation);
+        List<String> labels = await fetchLabels();
+        yield LokasiLoadedState(labels);
       } catch (e) {
-        yield LocationErrorState("Error fetching location data");
+        yield LokasiErrorState("Error fetching location data");
       }
+    } else if (event is SelectLokasiEvent) {
+      String currentSelectedValue = event.label;
+      // Lakukan sesuatu dengan label yang dipilih
     }
-
-    // Tambahkan penanganan event lainnya jika diperlukan
   }
 
-  Future<ModelLocation> fetchData() async {
-    // Gantilah ini dengan logika pengambilan data sesungguhnya
-    await Future.delayed(Duration(seconds: 2));
-    return ModelLocation(status: true, data: [
-      DataISI(label: "Location 1", detail: DetailAA(lat: 1.0, long: 2.0, radius: 100, idlokasi: "1")),
-      DataISI(label: "Location 2", detail: DetailAA(lat: 3.0, long: 4.0, radius: 150, idlokasi: "2")),
-    ]);
+  Future<List<String>> fetchLabels() async {
+    final apiUrl = 'http://192.168.14.213/v1/api/data/location';
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      final jsonBody = response.body;
+      final parsedJson = json.decode(jsonBody);
+      List<String> labels = List<String>.from(parsedJson['data'].map((label) => label['label']));
+      return labels;
+    } else {
+      throw Exception('Failed to fetch data');
+    }
   }
 }
+
